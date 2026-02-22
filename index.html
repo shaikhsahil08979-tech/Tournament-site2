@@ -1,23 +1,26 @@
-index.htm
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Match Info</title>
+<title>Free Fire Tournament</title>
 
 <style>
-body{
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family:Arial, sans-serif;
-  background: linear-gradient(-45deg,#2c5364,#203a43,#0f2027,#1c1c1c);
-  background-size:400% 400%;
-  animation: gradientMove 15s ease infinite;
+}
+
+body{
+  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
-  color:white;
+  background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c1c1c);
+  background-size:400% 400%;
+  animation: gradientMove 15s ease infinite;
 }
+
 @keyframes gradientMove{
   0%{ background-position:0% 50%; }
   50%{ background-position:100% 50%; }
@@ -25,60 +28,244 @@ body{
 }
 
 .container{
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
+  width:90%;
+  max-width:380px;
   padding:25px;
   border-radius:20px;
-  text-align:center;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
   box-shadow:0 8px 25px rgba(0,0,0,0.5);
-  max-width:400px;
-  width:90%;
+  color:white;
 }
 
 h2{
+  text-align:center;
   margin-bottom:20px;
 }
 
-p{
-  font-size:18px;
+input{
+  width:100%;
+  padding:12px;
   margin:8px 0;
+  border:none;
+  border-radius:10px;
+  background:rgba(255,255,255,0.1);
+  color:white;
 }
 
-.timer{
-  font-size:22px;
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
   font-weight:bold;
+  cursor:pointer;
+}
+
+.register-btn{
+  background:#00c6ff;
+  color:white;
+}
+
+.telegram-btn{
+  background:#111;
+  color:#00c6ff;
+  border:1px solid #00c6ff;
+}
+
+#message{
+  margin-top:10px;
+  text-align:center;
   color:#00ffcc;
-  margin-top:15px;
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
-<h2>🎮 Current Match Info</h2>
+<h2>Free Fire Tournament</h2>
 
-<p>Match Name: <span id="matchName">Free Fire Battle 1</span></p>
-<p>Room ID: <span id="roomID">123456</span></p>
-<p>Password: <span id="roomPass">abcd</span></p>
+<form onsubmit="registerPlayer(event)">
+<input type="text" id="name" placeholder="Enter Name" required>
+<input type="text" placeholder="Free Fire UID" required>
+<input type="text" placeholder="Phone Number" required>
 
-<p class="timer">Next Match Starts In: <span id="countdown">00:15:30</span></p>
+<button type="submit" class="register-btn">Register</button>
+</form>
+
+<p id="message"></p>
+
+<button class="telegram-btn"
+onclick="window.location.href='https://t.me/whynotyou08'">
+Join Telegram Channel
+</button>
+
 </div>
 
 <script>
-// Optional: Simple countdown timer (manual seconds for demo)
-let countdownEl = document.getElementById("countdown");
-let totalSeconds = 930; // 15min 30sec for example
+<script>
+function registerPlayer(event){
+event.preventDefault();
 
-let timerInterval = setInterval(()=>{
-  let minutes = Math.floor(totalSeconds / 60);
-  let seconds = totalSeconds % 60;
-  countdownEl.textContent = 
-      (minutes<10?"0":"")+minutes+":"+
-      (seconds<10?"0":"")+seconds;
-  totalSeconds--;
-  if(totalSeconds<0) clearInterval(timerInterval);
-},1000);
-</script>
+let name=document.querySelectorAll("input")[0].value;
+let uid=document.querySelectorAll("input")[1].value;
+let phone=document.querySelectorAll("input")[2].value;
+
+let message =
+"🎮 New Tournament Registration\n\n"+
+"👤 Name: "+name+"\n"+
+"🆔 UID: "+uid+"\n"+
+"📱 Phone: "+phone+"\n"+
+"💰 UPI: "+upi;
+
+let token ="8572571649:AAF_bRtC4RUfajAxRjttLsPWWEgb_9gH4uw";
+let chat_id = "7203894445";
+
+let url = "https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chat_id+"&text="+encodeURIComponent(message);
+
+fetch(url)
+.then(response => {
+document.getElementById("message").innerHTML="✔ Registration Sent to Admin 🚀";
+});
+}
+</script></script>
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+<title>Free Fire Tournament</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c1c1c);
+  background-size:400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
+
+.container{
+  width:90%;
+  max-width:380px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.5);
+  color:white;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border:none;
+  border-radius:10px;
+  background:rgba(255,255,255,0.1);
+  color:white;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.register-btn{
+  background:#00c6ff;
+  color:white;
+}
+
+.telegram-btn{
+  background:#111;
+  color:#00c6ff;
+  border:1px solid #00c6ff;
+}
+
+#message{
+  margin-top:10px;
+  text-align:center;
+  color:#00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Free Fire Tournament</h2>
+
+<form onsubmit="registerPlayer(event)">
+<input type="text" id="name" placeholder="Enter Name" required>
+<input type="text" placeholder="Free Fire UID" required>
+<input type="text" placeholder="Phone Number" required>
+
+<button type="submit" class="register-btn">Register</button>
+</form>
+
+<p id="message"></p>
+
+<button class="telegram-btn"
+onclick="window.location.href='https://t.me/whynotyou08'">
+Join Telegram Channel
+</button>
+
+</div>
+
+<script>
+<script>
+function registerPlayer(event){
+event.preventDefault();
+
+let name=document.querySelectorAll("input")[0].value;
+let uid=document.querySelectorAll("input")[1].value;
+let phone=document.querySelectorAll("input")[2].value;
+
+let message =
+"🎮 New Tournament Registration\n\n"+
+"👤 Name: "+name+"\n"+
+"🆔 UID: "+uid+"\n"+
+"📱 Phone: "+phone+"\n"+
+"💰 UPI: "+upi;
+
+let token ="8572571649:AAF_bRtC4RUfajAxRjttLsPWWEgb_9gH4uw";
+let chat_id = "7203894445";
+
+let url = "https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chat_id+"&text="+encodeURIComponent(message);
+
+fetch(url)
+.then(response => {
+document.getElementById("message").innerHTML="✔ Registration Sent to Admin 🚀";
+});
+}
+</script></script>
 
 </body>
 </html>
