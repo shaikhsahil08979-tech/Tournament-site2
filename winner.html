@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tournament Winner</title>
+<style>
+body{
+  font-family:Arial, sans-serif;
+  background: linear-gradient(-45deg,#203a43,#2c5364,#0f2027,#1c1c1c);
+  background-size:400% 400%;
+  animation: gradientMove 15s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+}
+@keyframes gradientMove{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
+
+.container{
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding:25px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.5);
+  max-width:400px;
+  width:90%;
+}
+
+h2{
+  margin-bottom:20px;
+}
+
+p{
+  font-size:18px;
+  margin:8px 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>🏆 Tournament Winner 🏆</h2>
+
+<p>👤 Name: <span id="winnerName">John Doe</span></p>
+<p>🆔 UID: <span id="winnerUID">12345678</span></p>
+<p>📱 Phone: <span id="winnerPhone">9876543210</span></p>
+<p>💰 Prize: <span id="winnerPrize">₹500</span></p>
+
+</div>
+</body>
+</html>

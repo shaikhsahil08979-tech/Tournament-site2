@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Match Info</title>
+
+<style>
+body{
+  font-family:Arial, sans-serif;
+  background: linear-gradient(-45deg,#2c5364,#203a43,#0f2027,#1c1c1c);
+  background-size:400% 400%;
+  animation: gradientMove 15s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+}
+@keyframes gradientMove{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
+
+.container{
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding:25px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.5);
+  max-width:400px;
+  width:90%;
+}
+
+h2{
+  margin-bottom:20px;
+}
+
+p{
+  font-size:18px;
+  margin:8px 0;
+}
+
+.timer{
+  font-size:22px;
+  font-weight:bold;
+  color:#00ffcc;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h2>🎮 Current Match Info</h2>
+
+<p>Match Name: <span id="matchName">Free Fire Battle 1</span></p>
+<p>Room ID: <span id="roomID">123456</span></p>
+<p>Password: <span id="roomPass">abcd</span></p>
+
+<p class="timer">Next Match Starts In: <span id="countdown">00:15:30</span></p>
+</div>
+
+<script>
+// Optional: Simple countdown timer (manual seconds for demo)
+let countdownEl = document.getElementById("countdown");
+let totalSeconds = 930; // 15min 30sec for example
+
+let timerInterval = setInterval(()=>{
+  let minutes = Math.floor(totalSeconds / 60);
+  let seconds = totalSeconds % 60;
+  countdownEl.textContent = 
+      (minutes<10?"0":"")+minutes+":"+
+      (seconds<10?"0":"")+seconds;
+  totalSeconds--;
+  if(totalSeconds<0) clearInterval(timerInterval);
+},1000);
+</script>
+
+</body>
+</html>
